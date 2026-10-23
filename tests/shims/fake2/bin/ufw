@@ -1,0 +1,6 @@
+#!/bin/sh
+echo "ufw $*" >> "$FAKE_LOG"
+case "$1" in
+  status) echo "Status: active" ;;
+  *) exit 0 ;;
+esac

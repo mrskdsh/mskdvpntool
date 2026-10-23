@@ -1,0 +1,8 @@
+#!/bin/bash
+# имитация ss: занятые порты из FAKE_BUSY_TCP / FAKE_BUSY_UDP (через пробел)
+t=0;u=0; for a in "$@"; do case "$a" in *t*) t=1;; esac; case "$a" in *u*) u=1;; esac; done
+multi=$((t+u)); 
+[ $multi -eq 2 ] && echo "Netid State Recv-Q Send-Q Local:Port Peer:Port"
+[ $multi -eq 1 ] && echo "State Recv-Q Send-Q Local:Port Peer:Port"
+if [ $t = 1 ]; then for p in $FAKE_BUSY_TCP; do [ $multi -eq 2 ] && echo "tcp LISTEN 0 4096 0.0.0.0:$p 0.0.0.0:*" || echo "LISTEN 0 4096 0.0.0.0:$p 0.0.0.0:*"; done; fi
+if [ $u = 1 ]; then for p in $FAKE_BUSY_UDP; do [ $multi -eq 2 ] && echo "udp UNCONN 0 0 0.0.0.0:$p 0.0.0.0:*" || echo "UNCONN 0 0 0.0.0.0:$p 0.0.0.0:*"; done; fi

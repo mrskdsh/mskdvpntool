@@ -1,0 +1,120 @@
+.migrate-card {
+  max-width: 440px;
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+}
+
+.migrate-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.migrate-label {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.migrate-option {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  min-height: 48px;
+  padding: 12px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: border-color 0.12s ease;
+}
+
+.migrate-option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.migrate-option::before {
+  content: "";
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  border: 1.5px solid var(--text-faint);
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+.migrate-option.active {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.migrate-option.active::before {
+  border-color: var(--accent);
+  background: radial-gradient(circle, var(--accent) 0 40%, transparent 45%);
+}
+
+.migrate-option:has(input:focus-visible) {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.migrate-option.disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.migrate-option-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+
+.migrate-option-main b {
+  color: var(--text);
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.migrate-option-hint {
+  color: var(--accent);
+  font-size: 0.78rem;
+}
+
+.migrate-note {
+  margin: 0 0 16px;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--text-dim);
+}
+
+.migrate-failed {
+  margin-bottom: 14px;
+  padding: 10px 12px;
+  background: var(--red-soft);
+  border: 1px solid var(--red);
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+@media (max-width: 560px) {
+  .migrate-backdrop {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .migrate-card {
+    max-width: none;
+    max-height: 92vh;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    padding-bottom: max(26px, env(safe-area-inset-bottom));
+  }
+}

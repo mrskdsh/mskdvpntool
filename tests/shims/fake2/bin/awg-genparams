@@ -1,0 +1,2 @@
+#!/bin/sh
+exec sh /tmp/claude-0/-home-claude/8e65521c-5f04-5034-87c1-de17b072e44b/scratchpad/vernette-src/repo/scripts/awg-genparams.sh

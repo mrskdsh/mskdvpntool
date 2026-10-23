@@ -1,0 +1,47 @@
+#!/bin/bash
+# Подмена docker: настоящий xray из ${XRAY_BIN:-/tmp/xr/xray}, но без контейнеров
+cmd=$1; shift
+echo "docker $cmd $*" >> "$FAKE_LOG"
+STATE=${FAKE_STATE:-/tmp/fake3-state}; mkdir -p $STATE
+case "$cmd" in
+  pull) exit 0 ;;
+  restart) name=$1; [ -f $STATE/$name.pid ] && kill $(cat $STATE/$name.pid) 2>/dev/null; sleep 0.5
+    setsid ${XRAY_BIN:-/tmp/xr/xray} $(cat $STATE/$name.args) > $STATE/$name.log 2>&1 &
+    echo $! > $STATE/$name.pid; exit 0 ;;
+  exec)
+    [ "$1" = "-i" ] && shift
+    shift   # имя контейнера
+    if [ "$1" = /usr/local/bin/xray ]; then shift; exec ${XRAY_BIN:-/tmp/xr/xray} "$@"; fi
+    exec "$@" ;;
+  rm) name=${@: -1}; [ -f $STATE/$name.pid ] && kill $(cat $STATE/$name.pid) 2>/dev/null; rm -f $STATE/$name.*; exit 0 ;;
+  ps) name=$(echo "$*" | grep -o 'name=\^[^$ ]*' | sed 's/name=\^//;s/\$.*//'); [ -f $STATE/$name.pid ] && kill -0 $(cat $STATE/$name.pid) 2>/dev/null && echo abc123; exit 0 ;;
+  run)
+    detach=0; name=""; bin=""; cfg=""; out=""
+    while [ $# -gt 0 ]; do
+      case "$1" in
+        -d) detach=1; shift ;;
+        --rm) shift ;;
+        --name) name=$2; shift 2 ;;
+        --network|--restart) shift 2 ;;
+        -v) m=$2; shift 2
+            case "$m" in *:/usr/local/bin/xray:ro) bin=${m%%:*} ;; *:/etc/xray|*:/etc/xray:ro) cfg=${m%%:*} ;; *:/out) out=${m%%:*} ;; esac ;;
+        *) break ;;
+      esac
+    done
+    img=$1; shift
+    if [ -n "$out" ]; then   # скачивание: проверяем, что команда синтаксически верна, и кладём настоящий xray
+      sh -n -c "$3" || exit 9
+      echo "SHCMD: $3" >> "$FAKE_LOG"
+      cp ${XRAY_BIN:-/tmp/xr/xray} $out/xray; exit 0
+    fi
+    [ -n "$cfg" ] && { rm -rf /etc/xray; ln -sfn "$cfg" /etc/xray; }   # путь /etc/xray внутри «контейнера»
+    [ "$1" = /usr/local/bin/xray ] || exit 8
+    shift
+    args=(); for a in "$@"; do args+=("${a/\/etc\/xray/$cfg}"); done
+    if [ $detach = 1 ]; then
+      echo "${args[@]}" > $STATE/$name.args
+      setsid ${XRAY_BIN:-/tmp/xr/xray} "${args[@]}" > $STATE/$name.log 2>&1 &
+      echo $! > $STATE/$name.pid; echo abc123; exit 0
+    fi
+    exec ${XRAY_BIN:-/tmp/xr/xray} "${args[@]}" ;;
+esac

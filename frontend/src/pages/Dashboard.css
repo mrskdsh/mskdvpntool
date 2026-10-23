@@ -1,0 +1,52 @@
+.dash-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.peer-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--text-dim);
+  padding: 50px 20px;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+}
+
+.select-bar {
+  position: sticky;
+  bottom: max(12px, env(safe-area-inset-bottom));
+  z-index: 15;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+  padding: 10px 12px;
+  background: var(--card);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-md);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.55);
+}
+
+.select-bar-count {
+  flex: 1;
+  min-width: 0;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.select-bar .btn-ghost,
+.select-bar .btn-primary {
+  flex-shrink: 0;
+  min-height: 44px;
+  padding: 0 16px;
+  white-space: nowrap;
+}

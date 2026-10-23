@@ -1,0 +1,4 @@
+#!/bin/sh
+echo "State   Recv-Q  Send-Q  Local Address:Port  Peer Address:Port Process"
+echo "UNCONN  0       0             0.0.0.0:39011       0.0.0.0:*"
+echo "UNCONN  0       0             0.0.0.0:39012       0.0.0.0:*"

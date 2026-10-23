@@ -1,0 +1,10 @@
+import { randomUUID } from "node:crypto";
+const { db } = await import(process.env.ROOT + "/src/db.js");
+const { hashPassword } = await import(process.env.ROOT + "/src/auth.js");
+const { createServerRecord } = await import(process.env.ROOT + "/src/servers-core.js");
+const mk = (u, role, pw) => { const id = randomUUID(); db.prepare("INSERT INTO users (id,username,password_hash,role,display_name) VALUES (?,?,?,?,?)").run(id, u, hashPassword(pw), role, u); return id; };
+mk("adm", "admin", "testpass123"); const a = mk("alice", "client", "alicepass1"); mk("bob", "client", "bobpass123");
+const sid = createServerRecord({ protocol: "vless-reality", name: "S", endpoint: "1.2.3.4:443", container: "c", configPath: "/x/config.json", publicKey: "PUB", extraParams: { sni: "www.example.com", shortId: "ab", port: 443, apiPort: 10085 } });
+const id = randomUUID(); const u = randomUUID();
+db.prepare("INSERT INTO peers (id,name,public_key,private_key,preshared_key,address,owner_id,server_id) VALUES (?,?,?,?,?,?,?,?)").run(id, "alice-phone", u, u, "-", "-", a, sid);
+console.log(JSON.stringify({ peerId: id, serverId: sid }));

@@ -1,0 +1,97 @@
+.login-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle at 20% 15%, rgba(200, 169, 110, 0.08), transparent 45%),
+    var(--bg);
+  padding: 20px;
+  padding-top: max(20px, env(safe-area-inset-top));
+  padding-bottom: max(20px, env(safe-area-inset-bottom));
+}
+
+.login-card {
+  width: 100%;
+  max-width: 360px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 36px 30px 30px;
+}
+
+.login-mark {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--accent-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.login-mark-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2.5px solid var(--accent);
+  border-top-color: transparent;
+  transform: rotate(45deg);
+}
+
+.login-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 6px;
+  letter-spacing: -0.01em;
+}
+
+.login-sub {
+  color: var(--text-dim);
+  font-size: 0.88rem;
+  margin: 0 0 28px;
+  line-height: 1.4;
+}
+
+.login-submit {
+  width: 100%;
+  margin-top: 6px;
+  padding: 13px;
+}
+
+.login-mode-tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 22px;
+}
+
+.login-mode-tab {
+  flex: 1;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  padding: 9px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.login-mode-tab.active {
+  border-color: var(--accent);
+  color: var(--text);
+  background: var(--accent-soft);
+}
+
+.login-registered {
+  text-align: center;
+}
+
+.login-registered .modal-sub {
+  color: var(--text-dim);
+  font-size: 0.88rem;
+  margin-bottom: 18px;
+  line-height: 1.4;
+}

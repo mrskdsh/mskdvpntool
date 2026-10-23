@@ -1,0 +1,69 @@
+:root {
+  --bg: #0d0d11;
+  --surface: #14141c;
+  --card: #1a1a24;
+  --card-hover: #20202c;
+  --border: #26262f;
+  --accent: #c8a96e;
+  --accent-soft: rgba(200, 169, 110, 0.14);
+  --green: #5cc98a;
+  --green-soft: rgba(92, 201, 138, 0.14);
+  --red: #e87c6b;
+  --red-soft: rgba(232, 124, 107, 0.14);
+  --blue: #7c9cf5;
+  --blue-soft: rgba(124, 156, 245, 0.14);
+  --text: #f2f1ee;
+  --text-dim: #9a98a3;
+  --text-faint: #5c5a66;
+
+  --font-display: "Unbounded", sans-serif;
+  --font-body: "Golos Text", sans-serif;
+
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+}
+
+::selection {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

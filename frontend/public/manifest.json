@@ -1,0 +1,16 @@
+{
+  "name": "Mr. Skdsh VPN",
+  "short_name": "Skdsh VPN",
+  "description": "Доступ к VPN и остатку трафика",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0d0d11",
+  "theme_color": "#0d0d11",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

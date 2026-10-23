@@ -1,0 +1,144 @@
+.client-content {
+  max-width: 420px;
+}
+
+.device-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.device-tab {
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  padding: 9px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.device-tab.active {
+  border-color: var(--accent);
+  color: var(--text);
+  background: var(--accent-soft);
+}
+
+.client-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 24px 26px;
+  text-align: center;
+}
+
+.client-gauge-wrap {
+  margin-bottom: 14px;
+}
+
+.client-status-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.client-status-line .peer-address {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.client-qr-btn {
+  width: 100%;
+}
+
+.blocked-note {
+  color: var(--red);
+  font-size: 0.82rem;
+  background: var(--red-soft);
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 18px;
+}
+
+.no-access {
+  text-align: center;
+  padding: 32px 24px;
+}
+
+.no-access .section-title {
+  margin-bottom: 8px;
+}
+
+.no-access .section-sub {
+  margin-bottom: 20px;
+}
+
+.add-device-btn {
+  width: 100%;
+  margin-top: 14px;
+}
+
+.history-section {
+  margin-top: 24px;
+}
+
+.history-section .label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-faint);
+  margin-bottom: 10px;
+}
+
+.history-item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 14px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  margin-bottom: 8px;
+}
+
+.history-item-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.history-item-title {
+  font-size: 0.85rem;
+  color: var(--text);
+}
+
+.history-response {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.history-status {
+  font-size: 0.72rem;
+  padding: 3px 9px;
+  border-radius: 20px;
+  background: var(--surface);
+  color: var(--text-faint);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.history-status--approved,
+.history-status--resolved {
+  color: var(--green);
+  background: var(--green-soft);
+}
+
+.history-status--rejected {
+  color: var(--red);
+  background: var(--red-soft);
+}

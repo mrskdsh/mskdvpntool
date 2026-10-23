@@ -1,0 +1,79 @@
+.topbar-menu {
+  display: none;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.topbar-menu-btn {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.topbar-menu-btn span {
+  width: 16px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--text-dim);
+}
+
+.topbar-menu-btn[aria-expanded="true"] {
+  border-color: var(--accent);
+}
+
+.topbar-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 50;
+  min-width: 200px;
+  padding: 6px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+}
+
+.topbar-dropdown-item {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  padding: 0 14px;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.topbar-dropdown-item:hover,
+.topbar-dropdown-item:focus-visible {
+  background: var(--card-hover);
+}
+
+.topbar-dropdown-item.danger {
+  color: var(--red);
+  margin-top: 4px;
+  border-top: 1px solid var(--border);
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+}
+
+@media (max-width: 560px) {
+  .topbar .topbar-actions {
+    display: none;
+  }
+
+  .topbar .topbar-menu {
+    display: block;
+  }
+}

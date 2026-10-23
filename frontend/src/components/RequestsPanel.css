@@ -1,0 +1,73 @@
+.requests-panel {
+  margin-bottom: 28px;
+}
+
+.requests-section {
+  margin-bottom: 20px;
+}
+
+.requests-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 0 0 10px;
+}
+
+.request-row {
+  background: var(--card);
+  border: 1px solid var(--accent-soft);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  margin-bottom: 10px;
+}
+
+.request-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 10px;
+}
+
+.request-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.request-comment {
+  color: var(--text-dim);
+  font-size: 0.82rem;
+}
+
+.request-form {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.request-form-wide {
+  align-items: center;
+}
+
+.request-input {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 9px 11px;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  font-family: var(--font-body);
+  flex: 1;
+  min-width: 120px;
+}
+
+.request-input-limit {
+  flex: 0 0 70px;
+  min-width: 60px;
+}
+
+.request-input-wide {
+  flex: 1;
+  min-width: 200px;
+}

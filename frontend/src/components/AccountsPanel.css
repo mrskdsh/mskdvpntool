@@ -1,0 +1,138 @@
+.accounts-panel {
+  margin: 0;
+}
+
+.accounts-toggle {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  padding: 9px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.accounts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.account-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+
+.account-name {
+  font-weight: 600;
+  font-size: 0.88rem;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.account-actions {
+  display: flex;
+  flex-shrink: 0;
+  gap: 8px;
+}
+
+.account-actions .btn-ghost {
+  padding: 8px 14px;
+  font-size: 0.82rem;
+  white-space: nowrap;
+}
+
+.account-devices {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+}
+
+.account-reset-form {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.account-reset-form input {
+  background: var(--surface);
+  border: 1px solid var(--accent);
+  color: var(--text);
+  padding: 7px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  width: 140px;
+}
+
+.reset-result {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: var(--green-soft);
+  border: 1px solid var(--green);
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  margin-bottom: 4px;
+}
+
+.reset-result code {
+  background: var(--surface);
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 560px) {
+  .account-row {
+    flex-wrap: wrap;
+  }
+
+  .account-name,
+  .account-devices {
+    flex: 1 1 100%;
+  }
+
+  .account-actions {
+    flex: 1 1 100%;
+  }
+
+  .account-actions .btn-ghost {
+    flex: 1;
+    min-height: 40px;
+  }
+
+  .account-reset-form {
+    flex: 1 1 100%;
+  }
+
+  .account-reset-form input {
+    flex: 1;
+    min-width: 0;
+    width: auto;
+  }
+}
+
+.ver-badge {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 8px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text-dim);
+  font-size: 0.68rem;
+  font-weight: 500;
+  vertical-align: 1px;
+}
+
+.ver-badge-31 {
+  border-color: var(--accent);
+  color: var(--accent);
+}

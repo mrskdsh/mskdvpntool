@@ -1,0 +1,89 @@
+.prov-hint {
+  margin: 0 0 16px;
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: var(--text-dim);
+}
+
+.prov-hint-tight {
+  margin: 6px 0 0;
+}
+
+.prov-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.prov-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: var(--text);
+}
+
+.prov-ok {
+  color: var(--green);
+}
+
+.prov-fail {
+  color: var(--red);
+}
+
+.prov-spinner {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: prov-spin 0.8s linear infinite;
+}
+
+@keyframes prov-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .prov-spinner {
+    animation-duration: 2.4s;
+  }
+}
+
+.prov-warnings {
+  padding: 10px 12px;
+  background: var(--accent-soft);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  line-height: 1.45;
+}
+
+.prov-warnings p {
+  margin: 0;
+}
+
+.prov-warnings p + p {
+  margin-top: 6px;
+}
+
+.prov-log {
+  margin: 0;
+  padding: 10px 12px;
+  max-height: 220px;
+  overflow: auto;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-dim);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+}

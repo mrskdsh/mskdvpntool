@@ -1,0 +1,19 @@
+#!/bin/sh
+cmd=$1; shift
+echo "docker $cmd $*" >> "$FAKE_LOG"
+case "$cmd" in
+  pull|rm) exit 0 ;;
+  run)
+    ep=""; img=""
+    while [ $# -gt 0 ]; do
+      case "$1" in
+        --entrypoint) ep=$2; shift 2; img=$1; shift; break ;;
+        *) shift ;;
+      esac
+    done
+    [ -z "$ep" ] && exit 0
+    echo "image=$img entry=$ep" >> "$FAKE_LOG"
+    exec "$ep" "$@"
+    ;;
+  exec) shift; exec "$@" ;;
+esac
